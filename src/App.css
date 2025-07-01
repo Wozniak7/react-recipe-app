@@ -1,27 +1,233 @@
-    /* Estilos básicos para o container principal da aplicação */
-    .app-container {
-      min-height: 100vh;
-      background-color: #f0f2f5;
-      /* Um cinza claro de fundo */
-      display: flex;
-      flex-direction: column;
-      /* Para organizar o conteúdo verticalmente */
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      box-sizing: border-box;
-      /* Garante que padding não aumente o tamanho total */
+    /* src/App.css */
+
+    /* Variáveis CSS para cores e fontes */
+    :root {
+      --primary-color: #28a745;
+      /* Verde principal */
+      --secondary-color: #6c757d;
+      /* Cinza secundário */
+      --background-light: #f0f2f5;
+      /* Fundo claro */
+      --card-background: #ffffff;
+      /* Fundo de cards */
+      --text-dark: #343a40;
+      /* Texto escuro */
+      --border-color: #dee2e6;
+      /* Cor de borda padrão */
+      --shadow-light: 0 4px 10px rgba(0, 0, 0, 0.08);
+      /* Sombra suave */
+      --shadow-medium: 0 6px 15px rgba(0, 0, 0, 0.12);
+      /* Sombra média */
     }
 
-    /* Estilo para o título principal */
-    .app-title {
+    body {
       font-family: 'Arial', sans-serif;
-      /* Fonte padrão */
-      font-size: 2.5rem;
-      /* Tamanho do título */
+      /* Usando Arial como fallback */
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      background-color: var(--background-light);
+      color: var(--text-dark);
+    }
+
+    #root {
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+    }
+
+    .app-container {
+      width: 100%;
+      max-width: 960px;
+      /* Largura máxima para o conteúdo principal */
+      padding: 20px;
+      margin: 20px auto;
+      /* Centraliza o container */
+      background-color: var(--card-background);
+      border-radius: 12px;
+      box-shadow: var(--shadow-medium);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .app-main-title {
+      font-size: 2.8rem;
       font-weight: bold;
-      color: #28a745;
-      /* Um verde vibrante */
-      margin-bottom: 20px;
+      color: var(--primary-color);
+      margin-bottom: 40px;
       text-align: center;
+    }
+
+    /* Estilos para a grade de receitas */
+    .recipe-list-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      /* Colunas responsivas */
+      gap: 25px;
+      /* Espaçamento entre os cards */
+      width: 100%;
+      padding-top: 20px;
+    }
+
+    /* Estilos para a página de detalhes da receita */
+    .recipe-detail-container {
+      width: 100%;
+      padding: 20px;
+      background-color: var(--card-background);
+      border-radius: 12px;
+      box-shadow: var(--shadow-light);
+    }
+
+    .detail-title {
+      font-size: 2rem;
+      color: var(--primary-color);
+      margin-top: 20px;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .detail-image {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow-light);
+    }
+
+    .detail-description {
+      font-size: 1.1rem;
+      color: var(--text-dark);
+      line-height: 1.6;
+      margin-bottom: 25px;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      color: var(--secondary-color);
+      margin-top: 30px;
+      margin-bottom: 15px;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 8px;
+    }
+
+    .ingredient-list,
+    .instruction-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .ingredient-item,
+    .instruction-item {
+      background-color: var(--background-light);
+      border: 1px solid var(--border-color);
+      border-radius: 5px;
+      padding: 10px 15px;
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+      color: var(--text-dark);
+    }
+
+    .instruction-list .instruction-item {
+      counter-increment: instruction-counter;
+    }
+
+    .instruction-list .instruction-item::before {
+      content: counter(instruction-counter) ". ";
+      font-weight: bold;
+      color: var(--primary-color);
+      margin-right: 5px;
+    }
+
+    .detail-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 30px;
+      padding-top: 15px;
+      border-top: 1px dashed var(--border-color);
+      justify-content: center;
+    }
+
+    .meta-item {
+      background-color: #e6ffe6;
+      color: var(--primary-color);
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .back-button {
+      background-color: var(--secondary-color);
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+      transition: background-color 0.3s ease;
+    }
+
+    .back-button:hover {
+      background-color: #5a6268;
+    }
+
+    .message-container {
+      text-align: center;
+      padding: 40px 20px;
+      background-color: var(--card-background);
+      border-radius: 12px;
+      box-shadow: var(--shadow-light);
+      margin-top: 50px;
+    }
+
+    .message-text {
+      font-size: 1.2rem;
+      color: var(--text-dark);
+      margin-bottom: 20px;
+    }
+
+    .error-message {
+      color: #dc3545;
+      /* Red for error messages */
+      font-weight: bold;
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      .app-main-title {
+        font-size: 2rem;
+      }
+
+      .recipe-list-grid {
+        grid-template-columns: 1fr;
+        /* Uma coluna em telas menores */
+      }
+
+      .recipe-card-image {
+        height: 180px;
+      }
+
+      .recipe-detail-container {
+        padding: 15px;
+      }
+
+      .detail-title {
+        font-size: 1.8rem;
+      }
+
+      .section-title {
+        font-size: 1.3rem;
+      }
+
+      .meta-item {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+      }
     }
