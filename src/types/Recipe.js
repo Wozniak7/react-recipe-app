@@ -1,106 +1,84 @@
-export const mockRecipes = [
-    {
-        id: 'rec1',
-        title: 'Bolo de Chocolate Clássico',
-        description: 'Um bolo úmido e delicioso, perfeito para qualquer ocasião.',
-        imageUrl: 'https://placehold.co/400x300/a8e6cf/000000?text=Bolo+Chocolate',
-        ingredients: [
-            { name: 'Farinha', quantity: 2, unit: 'xícaras' },
-            { name: 'Açúcar', quantity: 1.5, unit: 'xícaras' },
-            { name: 'Chocolate em pó', quantity: 0.75, unit: 'xícaras' },
-            { name: 'Ovos', quantity: 3, unit: 'unidades' },
-        ],
-        instructions: [
-            'Pré-aqueça o forno.',
-            'Misture ingredientes secos.',
-            'Adicione líquidos e misture.',
-            'Asse por 30 minutos.'
-        ],
-        prepTimeMinutes: 20,
-        cookTimeMinutes: 35,
-        servings: 8,
-    },
-    {
-        id: 'rec2',
-        title: 'Salada Caesar com Frango',
-        description: 'Uma salada Caesar fresca e crocante com suculento frango grelhado.',
-        imageUrl: 'https://placehold.co/400x300/d4a5a5/000000?text=Salada+Caesar',
-        ingredients: [
-            { name: 'Alface Romana', quantity: 1, unit: 'cabeça' },
-            { name: 'Peito de Frango', quantity: 200, unit: 'gramas' },
-            { name: 'Croutons', quantity: 1, unit: 'xícara' },
-            { name: 'Molho Caesar', quantity: 0.5, unit: 'xícara' },
-        ],
-        instructions: [
-            'Grelhe o frango e corte em fatias.',
-            'Lave e pique a alface.',
-            'Combine todos os ingredientes.',
-            'Sirva com molho.'
-        ],
-        prepTimeMinutes: 15,
-        cookTimeMinutes: 10,
-        servings: 2,
-    },
-    {
-        id: 'rec3',
-        title: 'Pizza Margherita Caseira',
-        description: 'A clássica pizza italiana com molho de tomate, mussarela e manjericão fresco.',
-        imageUrl: 'https://placehold.co/400x300/f0e68c/000000?text=Pizza+Margherita',
-        ingredients: [
-            { name: 'Massa de pizza', quantity: 1, unit: 'unidade' },
-            { name: 'Molho de tomate', quantity: 0.5, unit: 'xícara' },
-            { name: 'Mussarela', quantity: 200, unit: 'gramas' },
-            { name: 'Manjericão fresco', quantity: 10, unit: 'folhas' },
-        ],
-        instructions: [
-            'Estenda a massa.',
-            'Espalhe o molho e a mussarela.',
-            'Asse em forno pré-aquecido.',
-            'Decore com manjericão.'
-        ],
-        prepTimeMinutes: 20,
-        cookTimeMinutes: 15,
-        servings: 4,
-    },
-    {
-        id: 'rec4',
-        title: 'Smoothie de Frutas Vermelhas',
-        description: 'Um smoothie refrescante e saudável com uma mistura de frutas vermelhas.',
-        imageUrl: 'https://placehold.co/400x300/add8e6/000000?text=Smoothie+Frutas',
-        ingredients: [
-            { name: 'Frutas vermelhas congeladas', quantity: 1, unit: 'xícara' },
-            { name: 'Banana', quantity: 1, unit: 'unidade' },
-            { name: 'Iogurte natural', quantity: 0.5, unit: 'xícara' },
-            { name: 'Leite', quantity: 0.5, unit: 'xícara' },
-        ],
-        instructions: [
-            'Combine todos os ingredientes no liquidificador.',
-            'Bata até ficar homogêneo.',
-            'Sirva imediatamente.'
-        ],
-        prepTimeMinutes: 5,
-        cookTimeMinutes: 0,
-        servings: 1,
-    }
-];
+// src/types/Recipe.js
+// Define a estrutura de dados esperada para uma receita e seus ingredientes da API TheMealDB.
 
-// Se você precisar de um "tipo" Recipe para documentação, pode usar JSDoc:
 /**
  * @typedef {Object} Ingredient
  * @property {string} name
- * @property {number} quantity
- * @property {string} unit
+ * @property {string} measure
  */
 
 /**
  * @typedef {Object} Recipe
- * @property {string} id
- * @property {string} title
- * @property {string} description
- * @property {string} imageUrl
- * @property {Ingredient[]} ingredients
- * @property {string[]} instructions
- * @property {number} [prepTimeMinutes]
- * @property {number} [cookTimeMinutes]
- * @property {number} [servings]
+ * @property {string} idMeal - O ID da receita da API.
+ * @property {string} strMeal - O nome da receita.
+ * @property {string} strCategory - A categoria da receita (ex: "Dessert").
+ * @property {string} strArea - A área de origem da receita (ex: "British").
+ * @property {string} strInstructions - As instruções de preparo.
+ * @property {string} strMealThumb - URL da imagem miniatura da receita.
+ * @property {string} strYoutube - URL do vídeo do YouTube (opcional).
+ * @property {string} strSource - URL da fonte original (opcional).
+ * @property {string} [strIngredient1] - Ingrediente 1 (e assim por diante até 20).
+ * @property {string} [strMeasure1] - Medida do Ingrediente 1 (e assim por diante até 20).
+ * // ... (outros strIngredientX e strMeasureX até 20)
  */
+
+/**
+ * @typedef {Object} MealDetail
+ * @property {string} idMeal
+ * @property {string} strMeal
+ * @property {string} strCategory
+ * @property {string} strArea
+ * @property {string} strInstructions
+ * @property {string} strMealThumb
+ * @property {string} strYoutube
+ * @property {string} strSource
+ * @property {string} strTags
+ * @property {string} strCreativeCommonsConfirmed
+ * @property {string} strDrinkAlternate
+ * @property {string} strImageSource
+ * @property {string} strIngredient1
+ * @property {string} strIngredient2
+ * @property {string} strIngredient3
+ * @property {string} strIngredient4
+ * @property {string} strIngredient5
+ * @property {string} strIngredient6
+ * @property {string} strIngredient7
+ * @property {string} strIngredient8
+ * @property {string} strIngredient9
+ * @property {string} strIngredient10
+ * @property {string} strIngredient11
+ * @property {string} strIngredient12
+ * @property {string} strIngredient13
+ * @property {string} strIngredient14
+ * @property {string} strIngredient15
+ * @property {string} strIngredient16
+ * @property {string} strIngredient17
+ * @property {string} strIngredient18
+ * @property {string} strIngredient19
+ * @property {string} strIngredient20
+ * @property {string} strMeasure1
+ * @property {string} strMeasure2
+ * @property {string} strMeasure3
+ * @property {string} strMeasure4
+ * @property {string} strMeasure5
+ * @property {string} strMeasure6
+ * @property {string} strMeasure7
+ * @property {string} strMeasure8
+ * @property {string} strMeasure9
+ * @property {string} strMeasure10
+ * @property {string} strMeasure11
+ * @property {string} strMeasure12
+ * @property {string} strMeasure13
+ * @property {string} strMeasure14
+ * @property {string} strMeasure15
+ * @property {string} strMeasure16
+ * @property {string} strMeasure17
+ * @property {string} strMeasure18
+ * @property {string} strMeasure19
+ * @property {string} strMeasure20
+ * @property {string} strSource
+ * @property {string} strImageSource
+ * @property {string} strCreativeCommonsConfirmed
+ * @property {string} dateModified
+ */
+

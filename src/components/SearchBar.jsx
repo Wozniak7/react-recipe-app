@@ -24,7 +24,7 @@ const SearchBar = ({ onSearch }) => { // Removido <SearchBarProps>
             <input
                 type="text"
                 className="search-input"
-                placeholder="Buscar receitas..."
+                placeholder="Buscar receitas... (ex: chicken, pasta, etc.)"
                 value={query}
                 onChange={handleInputChange}
                 onKeyPress={handleKeyPress}

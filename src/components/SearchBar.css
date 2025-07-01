@@ -1,54 +1,87 @@
 /* src/components/SearchBar.css */
 .search-bar-container {
     display: flex;
-    gap: 10px;
-    /* Espaço entre o input e o botão */
-    margin-bottom: 30px;
+    gap: 15px;
+    /* Espaço maior entre o input e o botão */
+    margin-bottom: 40px;
+    /* Mais espaço abaixo da barra de busca */
     width: 100%;
-    max-width: 500px;
-    /* Limita a largura da barra de busca */
+    max-width: 600px;
+    /* Aumenta a largura máxima da barra de busca */
 }
 
 .search-input {
     flex-grow: 1;
-    /* Faz o input ocupar o espaço disponível */
-    padding: 12px 15px;
-    border: 2px solid #ccc;
-    border-radius: 8px;
-    font-size: 1rem;
+    padding: 14px 20px;
+    /* Padding maior */
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    /* Bordas mais arredondadas */
+    font-size: 1.1rem;
+    /* Fonte maior */
     outline: none;
-    /* Remove o contorno padrão no foco */
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    color: var(--text-dark);
+    background-color: var(--background-light);
+    /* Fundo levemente cinza */
+}
+
+.search-input::placeholder {
+    color: var(--secondary-color);
+    /* Cor do placeholder */
 }
 
 .search-input:focus {
-    border-color: #28a745;
-    /* Cor da borda no foco */
-    box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.2);
-    /* Sombra suave no foco */
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(52, 211, 153, 0.3);
+    /* Sombra mais visível no foco */
+    background-color: var(--card-background);
+    /* Fundo branco no foco */
 }
 
 .search-button {
-    padding: 12px 20px;
-    background-color: #28a745;
-    /* Verde vibrante */
-    color: white;
+    padding: 14px 25px;
+    /* Padding maior */
+    background-color: var(--primary-color);
+    color: var(--text-light);
     border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: bold;
+    border-radius: 10px;
+    /* Bordas mais arredondadas */
+    font-size: 1.1rem;
+    font-weight: 600;
+    /* Mais negrito */
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.1s ease;
+    transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
+    box-shadow: var(--shadow-sm);
+    /* Sombra no botão */
 }
 
 .search-button:hover {
-    background-color: #218838;
-    /* Verde mais escuro no hover */
-    transform: translateY(-1px);
-    /* Efeito de leve levantamento */
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+    /* Efeito de levantamento mais pronunciado */
+    box-shadow: var(--shadow-md);
 }
 
 .search-button:active {
     transform: translateY(0);
-    /* Retorna à posição original no clique */
+    box-shadow: var(--shadow-sm);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .search-bar-container {
+        flex-direction: column;
+        /* Empilha input e botão em mobile */
+        gap: 10px;
+        margin-bottom: 30px;
+    }
+
+    .search-input,
+    .search-button {
+        width: 100%;
+        /* Ocupa toda a largura */
+        font-size: 1rem;
+        padding: 12px 15px;
+    }
 }

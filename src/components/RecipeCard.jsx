@@ -1,31 +1,17 @@
 // src/components/RecipeCard.jsx
 import React from 'react';
-// import { Recipe } from '../types/Recipe'; // Removido import da interface Recipe
-import './RecipeCard.css'; // Estilos específicos para o card
+import './RecipeCard.css';
 
-const RecipeCard = ({ recipe, onClick }) => { // Removido <RecipeCardProps>
+const RecipeCard = ({ recipe, onClick }) => {
     return (
-        <div className="recipe-card" onClick={() => onClick(recipe.id)}>
-            <img src={recipe.imageUrl} alt={recipe.title} className="recipe-card-image" />
+        <div className="recipe-card" onClick={() => onClick(recipe.idMeal)}>
+            <img src={recipe.strMealThumb} alt={recipe.strMeal} className="recipe-card-image" />
             <div className="recipe-card-content">
-                <h3 className="recipe-card-title">{recipe.title}</h3>
-                <p className="recipe-card-description">{recipe.description}</p>
+                <h3 className="recipe-card-title">{recipe.strMeal}</h3>
+                <p className="recipe-card-description">{recipe.strCategory} - {recipe.strArea}</p> {/* Exibe categoria e área */}
+                {/* Detalhes como tempo de preparo e porções não vêm na busca por nome, apenas nos detalhes */}
                 <div className="recipe-card-details">
-                    {recipe.prepTimeMinutes && (
-                        <span className="recipe-card-detail-item">
-                            🕒 {recipe.prepTimeMinutes} min (Preparo)
-                        </span>
-                    )}
-                    {recipe.cookTimeMinutes && (
-                        <span className="recipe-card-detail-item">
-                            🔥 {recipe.cookTimeMinutes} min (Cozimento)
-                        </span>
-                    )}
-                    {recipe.servings && (
-                        <span className="recipe-card-detail-item">
-                            🍽️ {recipe.servings} Porções
-                        </span>
-                    )}
+                    {/* Podemos adicionar tags ou outras informações aqui se a API de busca por nome as fornecer */}
                 </div>
             </div>
         </div>
