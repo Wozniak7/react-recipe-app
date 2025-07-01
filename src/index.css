@@ -1,0 +1,13 @@
+    /* Estilos globais para o HTML e body */
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Estilos para o root do React */
+    #root {
+      width: 100%;
+      min-height: 100vh;
+    }
